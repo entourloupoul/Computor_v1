@@ -6,12 +6,11 @@
 #    By: pmasson <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/20 15:07:10 by pmasson           #+#    #+#              #
-#    Updated: 2019/03/21 20:01:07 by pmasson          ###   ########.fr        #
+#    Updated: 2019/03/25 08:11:23 by pmasson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/usr/bin/python3.4
-
 import signal
 import sys
 import utils
@@ -37,7 +36,7 @@ def computor():
     if (equation.po() > 2):
         print("The polynomial degree is stricly greater than 2, I can't solve.")
         sys,exit(0)
-    solve.get_det(equation)
+    solve.def_sol(equation)
 
 
 

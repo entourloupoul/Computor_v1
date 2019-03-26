@@ -6,11 +6,13 @@
 #    By: pmasson <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/20 16:19:34 by pmasson           #+#    #+#              #
-#    Updated: 2019/03/21 18:20:29 by pmasson          ###   ########.fr        #
+#    Updated: 2019/03/22 16:35:07 by pmasson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/usr/bin/python3.4
+
+import solve
 
 class   Equation():
     """class containing each parameter of the equation, the max power..."""
@@ -32,6 +34,14 @@ class   Equation():
         po = 0
         while (i < len(self._terms)):
             po = i / 2 if self._terms[i] != 0 else po
+            i += 2
+        i = 0
+        while (i < len(self._terms)):
+            if (int(self._terms[i] == self._terms[i] and int(self._terms[i + 1] == self._terms[i + 1]))):
+                pg = solve.pgcd(self._terms[i], self._terms[i + 1])
+                if (pg > 1):
+                    self._terms[i] = self._terms[i] / pg
+                    self._terms[i + 1] = self._terms[i + 1] / pg
             i += 2
         self._po = int(po)
 
@@ -114,6 +124,8 @@ class   Equation():
             if (nb != 0):
                 if (nb == 1 and len(ret) > 0):
                     ret += " + "
+                elif (nb == 1 and i == 0):
+                    ret += "1"
                 elif (i > 0 and len(ret) > 0):
                     ret += " * "
                 if (i == 2):
@@ -147,6 +159,8 @@ class   Equation():
             if (nb != 0):
                 if (nb == 1 and len(ret) > 0):
                     ret += " + "
+                elif (nb == 1 and i == 0):
+                    ret += "1"
                 elif (i > 0 and len(ret) > 0):
                     ret += " * "
                 if (i == 2):
@@ -160,7 +174,14 @@ class   Equation():
         return (ret)
 
     def po(self):
-        return (self._po) 
+        return (self._po)
+
+    def rat(self):
+        return (self._rat)
+
+    def terms(self):
+        return (self._terms)
+
 
 
 
